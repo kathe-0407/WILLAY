@@ -1,0 +1,8 @@
+{
+  "descripcion": "Umbrales Oficiales SENAMHI Perú (Temperatura Mínima en °C)",
+  "nivel_0_limite": "> 4.0°C (Sin riesgo)",
+  "nivel_1_limite": "2.0°C a 4.0°C (Bajo / Descenso leve)",
+  "nivel_2_limite": "0.0°C a 2.0°C (Moderado / Helada agrometeorológica ligera)",
+  "nivel_3_limite": "-2.0°C a 0.0°C (Alto / Helada agronómica moderada)",
+  "nivel_4_limite": "<= -2.0°C (Crítico / Helada severa)"
+}

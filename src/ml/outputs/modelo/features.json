@@ -1,0 +1,33 @@
+{
+  "features": [
+    "temperatura_inst",
+    "humedad_inst",
+    "precipitacion_hora",
+    "precipitacion_dia",
+    "altitud_msnm",
+    "latitud",
+    "longitud",
+    "hora",
+    "mes",
+    "dia_anio",
+    "estacion_anio",
+    "punto_rocio",
+    "delta_t_rocio",
+    "es_madrugada",
+    "cambio_temp_6h",
+    "cambio_humedad_6h",
+    "temp_inst_lag1h",
+    "temp_inst_lag3h",
+    "horas_bajo_cero",
+    "grado_horas_congelamiento",
+    "humedad_rolling_3h",
+    "precip_acumulada_6h",
+    "altitud_normalizada",
+    "temp_normal",
+    "anomalia_termica",
+    "anomalia_severa",
+    "temp_min_normal",
+    "anomalia_temp_min",
+    "tasa_enfriamiento"
+  ]
+}

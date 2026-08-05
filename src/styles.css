@@ -1,0 +1,121 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'Geist', system-ui, sans-serif;
+  --font-serif: 'Lora', Georgia, serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--primary);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-contrast: var(--success-contrast);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-contrast: var(--warning-contrast);
+  --color-risk: var(--risk);
+  --color-risk-soft: var(--risk-soft);
+  --color-risk-contrast: var(--risk-contrast);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.4);
+}
+
+:root {
+  color-scheme: light;
+  --background: #f6f9f9;
+  --foreground: #17292d;
+  --card: #ffffff;
+  --card-foreground: #17292d;
+  --primary: #087f8c;
+  --primary-foreground: #ffffff;
+  --secondary: #dceced;
+  --secondary-foreground: #173f44;
+  --muted: #edf3f3;
+  --muted-foreground: #566d72;
+  --accent: #e2f3f3;
+  --accent-foreground: #15484d;
+  --destructive: #a72d27;
+  --border: #ceddde;
+  --success: #277a4b;
+  --success-soft: #e2f2e8;
+  --success-foreground: #185334;
+  --success-contrast: #ffffff;
+  --warning: #d5951b;
+  --warning-soft: #fff3cd;
+  --warning-foreground: #66470c;
+  --warning-contrast: #231702;
+  --risk: #087f8c;
+  --risk-soft: #e2f3f3;
+  --risk-contrast: #ffffff;
+  --radius: 0.75rem;
+}
+
+[data-risk='calm'] { --risk: #087f8c; --risk-soft: #e2f3f3; --risk-contrast: #ffffff; }
+[data-risk='medium'] { --risk: #c47b08; --risk-soft: #fff3cd; --risk-contrast: #241400; }
+[data-risk='high'] { --risk: #d9550d; --risk-soft: #ffeadc; --risk-contrast: #ffffff; }
+[data-risk='critical'] { --risk: #9e2722; --risk-soft: #f8e5e3; --risk-contrast: #ffffff; }
+
+@layer base {
+  * { border-color: var(--border); }
+  html { scroll-behavior: smooth; background: var(--background); }
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+  button, select, input { font: inherit; color: inherit; }
+  button, a, summary { -webkit-tap-highlight-color: transparent; }
+  button:focus-visible, a:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--primary) 45%, transparent);
+    outline-offset: 3px;
+  }
+}
+
+.risk-card {
+  border-color: color-mix(in srgb, var(--risk) 65%, var(--border));
+  background: linear-gradient(180deg, var(--risk-soft) 0, var(--card) 18rem);
+}
+.risk-strip, .risk-button { background: var(--risk); }
+.risk-label {
+  background: var(--risk-soft);
+  color: var(--risk);
+  border: 1px solid color-mix(in srgb, var(--risk) 35%, transparent);
+}
+.request-dot[data-status='new'] { background: #b9342f; }
+.request-dot[data-status='progress'] { background: #d87612; }
+.request-dot[data-status='done'] { background: #277a4b; }
+
+@keyframes soft-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 color-mix(in srgb, var(--risk) 25%, transparent); }
+  50% { transform: scale(1.025); box-shadow: 0 0 0 8px transparent; }
+}
+.animate-soft-pulse { animation: soft-pulse 2.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

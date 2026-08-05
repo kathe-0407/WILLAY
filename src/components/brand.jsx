@@ -1,0 +1,27 @@
+import { Radio, MapPin } from 'lucide-react'
+import { useApp } from '../context/app-context'
+
+export function Brand({ showSubtitle = true }) {
+  const { t } = useApp()
+  return (
+    <div className="flex items-center gap-3">
+      <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
+        <Radio aria-hidden="true" className="size-6" />
+      </span>
+      <div className="flex flex-col">
+        <span className="font-serif text-2xl font-black tracking-tight">{t('appName')}</span>
+        {showSubtitle && <span className="text-sm font-medium text-muted-foreground">{t('subtitle')}</span>}
+      </div>
+    </div>
+  )
+}
+
+export function LocationLabel() {
+  const { t } = useApp()
+  return (
+    <p className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-muted-foreground">
+      <MapPin aria-hidden="true" className="size-4" />
+      {t('location')}
+    </p>
+  )
+}

@@ -1,0 +1,36 @@
+import { Check } from 'lucide-react'
+import { useApp } from '../context/app-context'
+import { cn } from '../lib/utils'
+
+export function LanguageSelector({ compact = false }) {
+  const { language, setLanguage, t } = useApp()
+
+  return (
+    <div className={cn('flex flex-col gap-2', compact ? 'items-start md:items-end' : 'items-center')}>
+      <div className="flex rounded-xl border border-border bg-card p-1 shadow-sm" role="group" aria-label={t('currentLanguage')}>
+        {['es', 'qu'].map(code => {
+          const active = language === code
+          return (
+            <button
+              key={code}
+              type="button"
+              onClick={() => setLanguage(code)}
+              aria-pressed={active}
+              className={cn(
+                'flex min-h-11 items-center gap-2 rounded-lg px-4 text-sm font-bold transition-colors',
+                active ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:bg-muted',
+              )}
+            >
+              {active && <Check aria-hidden="true" className="size-4" />}
+              {t(code === 'es' ? 'spanish' : 'quechua')}
+              {active && <span className="sr-only">{t('selected')}</span>}
+            </button>
+          )
+        })}
+      </div>
+      <p className="text-sm font-medium text-muted-foreground">
+        {t('currentLanguage')} <span className="text-foreground">{t(language === 'es' ? 'spanish' : 'quechua')}</span>
+      </p>
+    </div>
+  )
+}

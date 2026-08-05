@@ -1,0 +1,31 @@
+estacion_nombre,tipo,latitud,longitud,altitud_msnm,provincia,distrito,zona_climatica
+Pampilla,REGULAR,-16.41379,-71.53453,2335,Arequipa,Jose Luis Bustamante y Rivero,Quechua / Templado Seco
+Huasacache,REGULAR,-16.45774,-71.56635,2240,Arequipa,Hunter,Quechua / Campina Templada
+Salinas,REGULAR,-16.315,-71.215,4300,Arequipa,San Juan de Tarucani,Puna / Altiplanico Salar (Heladas severas)
+Yura,REGULAR,-16.30271,-71.62395,2590,Arequipa,Yura,Yunga / Valles Deserticos
+Chiguata,REGULAR,-16.40645,-71.40914,2970,Arequipa,Chiguata,Suni / Falda del Misti
+UV Arequipa,UV,-16.4,-71.53,2325,Arequipa,Arequipa Cercado,Quechua Urbana Radiacion Alta
+Imata,EMA,-15.834,-71.088,4519,Caylloma,San Antonio de Chuca,Puna Frigida / Heladas extremas (-18 C)
+Patahuasi,EMA,-15.986,-71.412,4200,Caylloma,Yanque,Puna Altoandina / Carretera Arequipa-Puno
+Uzuna,EMA,-16.58103,-71.32836,3150,Arequipa,Polobaya,Suni / Ladera Sur Oriental
+Pillones,EMA,-15.58,-71.12,4360,Caylloma,San Antonio de Chuca,Puna / Embalse Represa Pillones
+Majes,EMA,-16.321,-72.21,1410,Caylloma,Majes / El Pedregal,Desertico Subtropical Arido
+Tuctumpaya,EPA,-16.48827,-71.33463,3150,Arequipa,Pocsi,Suni Altoandina
+Cayma,EPA,-16.31687,-71.52908,2400,Arequipa,Cayma,Quechua Valenzuela
+San Francisco,EPA,-16.38519,-71.49044,2550,Arequipa,Characato,Quechua Campina Alta
+Charcani,EHA,-16.31086,-71.49511,2610,Arequipa,Alto Selva Alegre / Cuenca Rio Chili,Hidrometrica Canion del Chili
+Bella Esperanza,REGULAR,-16.52,-71.78,1850,Arequipa,Uchumayo,Yunga Desertica
+Puente del Diablo,HIDROMETRICA,-16.32,-71.49,2580,Arequipa,Cayma / Valle Chili,Hidrometrica Rio Chili Medio
+Tingo Grande,HIDROMETRICA,-16.44,-71.55,2180,Arequipa,Jacobita Hunter / Rio Socabaya,Hidrometrica Cuenca Baja
+Vincocaya,EMA,-15.6512,-71.0425,4380,Caylloma,San Antonio de Chuca,Puna Frigida / Paso de Montana (Heladas -20 C)
+Crucero Alto,EMA,-15.7725,-70.9231,4520,Caylloma,San Antonio de Chuca,Puna Nival / Divisoria Continental (Heladas severas)
+Condoroma,EMA,-15.281,-71.142,4625,Caylloma,Callalli,Puna Subpolar / Represa Condoroma
+Sumbay,EMA,-16.035,-71.378,4120,Arequipa,San Juan de Tarucani,Puna Reserva Salinas y Aguada Blanca
+Vizcachani,EMA,-15.195,-71.776,4310,Caylloma,Caylloma,Puna Minera / Cuenca Alta del Rio Colca
+Sibayo,EMA,-15.485,-71.458,3810,Caylloma,Sibayo,Suni - Puna Transicion / Entrada Valle Colca
+Callalli,EMA,-15.503,-71.442,3860,Caylloma,Callalli,Puna Altiplanica Caylloma
+Chivay,EMA,-15.6382,-71.6019,3651,Caylloma,Chivay,Suni / Valle del Colca Capital
+Cotahuasi,EMA,-15.212,-72.89,2680,La Union,Cotahuasi,Quechua / Canion de Cotahuasi
+Orcopampa,EMA,-15.265,-72.342,3780,Castilla,Orcopampa,Suni / Valle de los Volcanes
+Pampacolca,EMA,-15.715,-72.568,3650,Castilla,Pampacolca,Suni / Ladera Nevado Coropuna
+La Joya - San Camilo,EMA,-16.65,-71.82,1270,Arequipa,La Joya,Yunga Fluvial / Irrigacion San Camilo
