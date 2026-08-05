@@ -1,0 +1,35 @@
+# Entornos Virtuales de Python
+env/
+venv/
+.venv/
+env_*/
+
+# Archivos de Cache de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node.js / Frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Archivos del Sistema Operativo y Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Logs y Temporales
+*.log
+.gemini/

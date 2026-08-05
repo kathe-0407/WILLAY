@@ -1,97 +1,27 @@
-'use client'
-
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { translations, type Language, type TranslationKey } from '@/src/data/translations'
-
-export type View = 'community' | 'login' | 'coordination'
-export type Risk = 'calm' | 'medium' | 'high' | 'critical'
-export type Sector = 'center' | 'north' | 'south' | 'reservoir' | 'other'
-export type RequestStatus = 'new' | 'progress' | 'done'
-export type CommunityResponse = { alertId: string; type: 'understood' | 'help'; time: string; sector?: Sector; queued?: boolean } | null
-export type HelpRequest = { id: string; sector: Sector; status: RequestStatus; time: string }
-
-type AppContextValue = {
-  hydrated: boolean; language: Language; setLanguage: (value: Language) => void; t: (key: TranslationKey) => string
-  view: View; setView: (view: View) => void; risk: Risk; setRisk: (risk: Risk) => void
-  alertActive: boolean; setAlertActive: (active: boolean) => void; response: CommunityResponse
-  requests: HelpRequest[]; respondUnderstood: () => void; requestHelp: (sector: Sector) => void
-  updateRequest: (id: string, status: RequestStatus) => void; online: boolean; toggleOnline: () => void
-  responseTime: string; temperature: string; minimum: string
-}
-
-const AppContext = createContext<AppContextValue | null>(null)
-const ALERT_ID = 'imata-demo-alert'
-
-export function AppProvider({ children }: { children: React.ReactNode }) {
-  const [hydrated, setHydrated] = useState(false)
-  const [language, setLanguageState] = useState<Language>('es')
-  const [view, setView] = useState<View>('community')
-  const [risk, setRisk] = useState<Risk>('calm')
-  const [alertActive, setAlertActive] = useState(false)
-  const [response, setResponse] = useState<CommunityResponse>(null)
-  const [requests, setRequests] = useState<HelpRequest[]>([])
-  const [online, setOnline] = useState(true)
-
-  useEffect(() => {
-    const storedLanguage = localStorage.getItem('willay-language') as Language | null
-    const storedResponse = localStorage.getItem('willay-response')
-    const storedRequests = localStorage.getItem('willay-requests')
-    const storedRisk = localStorage.getItem('willay-risk') as Risk | null
-    const storedActive = localStorage.getItem('willay-alert-active')
-    if (storedLanguage === 'es' || storedLanguage === 'qu') setLanguageState(storedLanguage)
-    if (storedResponse) setResponse(JSON.parse(storedResponse))
-    if (storedRequests) setRequests(JSON.parse(storedRequests))
-    if (storedRisk) setRisk(storedRisk)
-    if (storedActive) setAlertActive(storedActive === 'true')
-    setOnline(navigator.onLine)
-    setHydrated(true)
-  }, [])
-
-  useEffect(() => {
-    if (!hydrated) return
-    localStorage.setItem('willay-language', language)
-    localStorage.setItem('willay-risk', risk)
-    localStorage.setItem('willay-alert-active', String(alertActive))
-    if (response) localStorage.setItem('willay-response', JSON.stringify(response))
-    localStorage.setItem('willay-requests', JSON.stringify(requests))
-    document.documentElement.lang = language === 'es' ? 'es' : 'qu'
-  }, [hydrated, language, risk, alertActive, response, requests])
-
-  useEffect(() => {
-    const connected = () => setOnline(true)
-    const disconnected = () => setOnline(false)
-    window.addEventListener('online', connected)
-    window.addEventListener('offline', disconnected)
-    return () => { window.removeEventListener('online', connected); window.removeEventListener('offline', disconnected) }
-  }, [])
-
-  const setLanguage = useCallback((value: Language) => setLanguageState(value), [])
-  const t = useCallback((key: TranslationKey) => translations[language][key], [language])
-  const now = () => new Intl.DateTimeFormat(language === 'es' ? 'es-PE' : 'qu-PE', { hour: 'numeric', minute: '2-digit' }).format(new Date())
-
-  const respondUnderstood = useCallback(() => {
-    setResponse(current => current?.alertId === ALERT_ID ? current : { alertId: ALERT_ID, type: 'understood', time: now(), queued: !online })
-  }, [online, language])
-
-  const requestHelp = useCallback((sector: Sector) => {
-    setResponse(current => {
-      if (current?.alertId === ALERT_ID && current.type === 'help') return current
-      const time = now()
-      setRequests(items => [{ id: crypto.randomUUID(), sector, status: 'new', time }, ...items])
-      return { alertId: ALERT_ID, type: 'help', time, sector, queued: !online }
-    })
-  }, [online, language])
-
-  const updateRequest = useCallback((id: string, status: RequestStatus) => setRequests(items => items.map(item => item.id === id ? { ...item, status } : item)), [])
-  const toggleOnline = useCallback(() => setOnline(value => !value), [])
-
-  const value = useMemo<AppContextValue>(() => ({ hydrated, language, setLanguage, t, view, setView, risk, setRisk, alertActive, setAlertActive, response, requests, respondUnderstood, requestHelp, updateRequest, online, toggleOnline, responseTime: response?.time ?? '', temperature: risk === 'calm' ? '8 °C' : risk === 'medium' ? '3 °C' : risk === 'high' ? '-2 °C' : '-6 °C', minimum: risk === 'calm' ? '2 °C' : risk === 'medium' ? '-1 °C' : risk === 'high' ? '-7 °C' : '-11 °C' }), [hydrated, language, setLanguage, t, view, risk, alertActive, response, requests, respondUnderstood, requestHelp, updateRequest, online, toggleOnline])
-
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>
-}
-
-export function useApp() {
-  const value = useContext(AppContext)
-  if (!value) throw new Error('useApp must be used within AppProvider')
-  return value
+{
+  "name": "my-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "lucide-react": "^1.16.0",
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.0.5",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.2.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "hono": "4.12.25"
+    }
+  }
 }
